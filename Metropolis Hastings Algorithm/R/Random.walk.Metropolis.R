@@ -1,0 +1,2 @@
+Random.walk.Metropolis <-
+function(){}

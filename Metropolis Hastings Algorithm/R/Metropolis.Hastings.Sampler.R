@@ -1,0 +1,2 @@
+Metropolis.Hastings.Sampler <-
+function(){}

@@ -1,0 +1,2 @@
+Independence.sampler <-
+function(){}
