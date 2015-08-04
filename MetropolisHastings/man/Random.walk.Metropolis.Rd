@@ -1,14 +1,14 @@
-\name{Bayesian.inference}
-\alias{Bayesian.inference}
+\name{Random.walk.Metropolis}
+\alias{Random.walk.Metropolis}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Metropolis-Hastings Algorithm: Random-walk
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-Bayesian.inference()
+Random.walk.Metropolis()
 }
 %- maybe also 'usage' for other objects documented here.
 \details{

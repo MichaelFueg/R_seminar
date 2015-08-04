@@ -1,28 +1,27 @@
-\name{Metropolis Hastings Algorithm-package}
-\alias{Metropolis Hastings Algorithm-package}
-\alias{Metropolis Hastings Algorithm}
+\name{MetropolisHastings}
+\alias{MetropolisHastings}
 \docType{package}
 \title{
-\packageTitle{Metropolis Hastings Algorithm}
+\packageTitle{MetropolisHastings}
 }
 \description{
-\packageDescription{Metropolis Hastings Algorithm}
+\packageDescription{MetropolisHastings}
 }
 \details{
 
 The DESCRIPTION file:
-\packageDESCRIPTION{Metropolis Hastings Algorithm}
-\packageIndices{Metropolis Hastings Algorithm}
+\packageDESCRIPTION{MetropolisHastings}
+\packageIndices{MetropolisHastings}
 ~~ An overview of how to use the package, including the most important ~~
 ~~ functions ~~
 }
 \author{
-\packageAuthor{Metropolis Hastings Algorithm}
+\packageAuthor{MetropolisHastings}
 
-Maintainer: \packageMaintainer{Metropolis Hastings Algorithm}
+Maintainer: \packageMaintainer{MetropolisHastings}
 }
 \references{
-~~ Literature or other references for background information ~~
+~~ Maria L. Rizzo: Statistical Computing with R, Chapter 9.2 ~~
 }
 ~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
 ~~ the R documentation directory ~~

@@ -1,0 +1,9 @@
+Package: MetropolisHastings
+Type: Package
+Title: MetropolisHastings
+Version: 1.0
+Date: 2015-08-04
+Author: Michael Fueg
+Maintainer: Michael Fueg <michael.fueg@googlemail.com>
+Description: This R package provides special cases of the Metropolis-Hastings Algorithm based on the seminar Computational Statistics in the university of Mannheim.The Algorithm creates a sequence of random numbers with respect on a specific steady-state distribution.
+License: GLP (>=3)

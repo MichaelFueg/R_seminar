@@ -1,2 +1,0 @@
-Bayesian.inference <-
-function(){}
