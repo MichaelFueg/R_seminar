@@ -5,27 +5,30 @@
 Metropolis-Hastings Algorithm: Random-walk
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This algorithm is a special case of a Metropolis sampler.
 }
 \usage{
-Random.walk.Metropolis()
+Random.walk.Metropolis(n, sigma, x0, N)
 }
-%- maybe also 'usage' for other objects documented here.
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Input parameters:
+\item{n }{Description of 'comp1'}
+\item{sigma }{Variance of prosposal distribution}
+\item{x0 }{Initialvalue of algorithm}
+\item{N }{Iteration number}
+
+Output parameters:
+\item{simulation }{Initialvalue of algorithm}
+\item{events  }{Number of rejected points}
 }
 \references{
-%% ~put references to the literature/web site here ~
+Maria L. Rizzo, Statistical Computing with R, chapter 9.2.3
 }
 \author{
-%%  ~~who you are~~
+Michael Fueg
 }
 \note{
 %%  ~~further notes~~
@@ -37,16 +40,14 @@ Random.walk.Metropolis()
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+# Use the default values
+Random.walk.Metropolis()
 
-## The function is currently defined as
-function () 
-{
-  }
+# Variate the variance
+sigma <- c( .05, .5, 2, 16)
+res <- list()
+for(i in 1:length(sigma)){
+	name <- paste("SimulationNr_", i, sep="")
+	res[[name]] <- Random.walk.Metropolis(sigma=sigma[i])
+	}
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
