@@ -1,0 +1,5 @@
+dev.off()
+par(mfrow=c(2,1))#
+hist(res$simulation[2001:10000], breaks="scott", main="", xlab="", freq=F)#
+lines(QR, f(QR,4))
+dev.off()
