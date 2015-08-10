@@ -8,20 +8,23 @@ Metropolis-Hastings Algorithm: Independence sampler
 This algorithm is a special case of a Metropolis sampler.
 }
 \usage{
-Independence.sampler()
+Independence.sampler(n, N, a, b, mu, sigma, p)
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 Input parameters:
-\item{n }{Description of 'comp1'}
-\item{sigma }{Variance of prosposal distribution}
-\item{x0 }{Initialvalue of algorithm}
-\item{N }{Iteration number}
+\item{n }{sample size}
+\item{N }{Number of iterations}
+\item{a }{Parameter of Beta(a,b) prospal distribution}
+\item{b }{Parameter of Beta(a,b) prospal distribution}
+\item{mu }{Parameter of the normal density}
+\item{sigma }{Variance of the normal density}
+\item{p }{Mixing parameter}
 
 Output parameters:
-\item{simulation }{Initialvalue of algorithm}
+\item{simulation }{Simulation set}
 \item{events  }{Number of rejected points}
 }
 \references{
@@ -40,5 +43,14 @@ Michael Fueg
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Use the default values: n=4, sigma=1, x0=25, N=2000
+# Use the default values: n=30, N=5000, a=1, b=1, mu=c(0,5), sigma=c(1,1), p=0.2
+res <- Independence.sampler()
+hist(res$simulation[101:5000], main="", xlab="p", prob=T)
+print(mean(res$simulation[101:5000]))
+
+# Plot simulation with different values of a and b
+par(mfrow=c(2,1))
+plot(Independence.sampler()$simulation, type="l", ylab="p")
+plot(Independence.sampler(a=5, b=2)$simulation, type="l", ylab="p")
+dev.off()
 }
