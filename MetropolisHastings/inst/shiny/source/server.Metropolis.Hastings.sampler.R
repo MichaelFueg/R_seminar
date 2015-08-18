@@ -74,8 +74,53 @@ output$"1.3.rangeReactivePlot" <- renderUI({
         value = c(1, input$"1.3.N"))
 })
 
+dataInputChisquared1.3 <- reactive({ 
+    Metropolis.Hastings.sampler(sigma=input$"1.3.sigma", N=input$"1.3.N") 
+})
 
+dataInputGamma1.3 <- reactive({ 
+    Metropolis.Hastings.sampler.Gamma(sigma=input$"1.3.sigma", N=input$"1.3.N") 
+})
 
+observeEvent(input$"1.3.rangePlot", ({
+    output$"1.3.Plot.Chisquared" <- renderPlot({
+        index <- input$"1.3.rangePlot"[1]:input$"1.3.rangePlot"[2]
+        viz <- dataInputChisquared1.3()$simulation[index]
+
+        f.Rayleigh <- function(x, sigma){
+            if (any(x <0)) return(0)
+            stopifnot(sigma > 0)
+            return((x / sigma^2) * exp(-x^2 / (2 * sigma^2)))
+        }
+        a <- ppoints(100)
+        QR <- 4 * sqrt(-2 * log(1-a)) 
+
+        par(mfrow=c(1,2))
+            plot(x=index, y=viz, xlab="Iteration", ylab="X", type="l", 
+                main=paste("Quantity of rejected points: ",dataInputChisquared1.3()$events, sep=""))
+            hist(viz, breaks="scott", main="Histogram", xlab="", freq=F)
+            lines(QR, f.Rayleigh(x=QR, sigma=input$"1.3.sigma"))
+    })
+
+    output$"1.3.Plot.Gamma" <- renderPlot({
+        index <- input$"1.3.rangePlot"[1]:input$"1.3.rangePlot"[2]
+        viz <- dataInputGamma1.3()$simulation[index]
+
+        f.Rayleigh <- function(x, sigma){
+            if (any(x <0)) return(0)
+            stopifnot(sigma > 0)
+            return((x / sigma^2) * exp(-x^2 / (2 * sigma^2)))
+        }
+        a <- ppoints(100)
+        QR <- 4 * sqrt(-2 * log(1-a)) 
+        
+        par(mfrow=c(1,2))
+            plot(x=index, y=viz, xlab="Iteration", ylab="X", type="l", 
+                main=paste("Quantity of rejected points: ",dataInputGamma1.3()$events, sep=""))
+            hist(viz, breaks="scott", main="Histogram", xlab="", freq=F)
+            lines(QR, f.Rayleigh(x=QR, sigma=input$"1.3.sigma"))
+    })
+}))
 #------------------------ Exersice 1.4 ------------------------#
 output$"1.4.rangeReactivePlot" <- renderUI({
     sliderInput("1.4.rangePlot", 

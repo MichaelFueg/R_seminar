@@ -6,7 +6,7 @@ shinyUI(fluidPage(
     			fluidRow(
   					column(3, 
   						numericInput("1.1.sigma",
-    						"Variance of prosposal distribution:",
+    						"Variance of Rayleigh distribution:",
     						min = 0,
     						value = 4)
     				),
@@ -35,7 +35,7 @@ shinyUI(fluidPage(
                     helpText("Comparing the Metropolis-Hastings sampler method with the inverse transform method to generat Rayleigh samples with sigma = 2"),            
                     column(3,
                         numericInput("1.2.sigma", 
-                            "Variance of prosposal distribution:", 
+                            "Variance of Rayleigh distribution:", 
                             min = 0,
                             value = 4)
                     ),
@@ -74,7 +74,7 @@ shinyUI(fluidPage(
                     helpText("Use as prosposal distribution Y ~ Gamma(X_t, 1) and compare the result with Z ~ X^2(X_t)"),            
                     column(3,
                         numericInput("1.3.sigma",
-                            "Variance of prosposal distribution:",
+                            "Variance of Rayleigh distribution:",
                             min = 0,
                             value = 4)
                     ),
@@ -82,22 +82,16 @@ shinyUI(fluidPage(
                         sliderInput("1.3.N", 
                             "Time horizon:", 
                             min = 2,
-                            max = 1000, 
-                            value = 100)
+                            max = 100000, 
+                            value = 10000)
                     ),
                     column(3,
                         uiOutput("1.3.rangeReactivePlot")
                     )
                 ),
                 hr(),
-                fluidRow(
-                    column(6,
-                        plotOutput("1.3.Plot.Gamma")
-                    ),
-                    column(6,
-                        plotOutput("1.3.Plot.Chisquared")
-                    )
-                )
+                plotOutput("1.3.Plot.Chisquared"),
+                plotOutput("1.3.Plot.Gamma")
             ),
 
 			tabPanel("Exersice 1.4: Cauchy distribution",

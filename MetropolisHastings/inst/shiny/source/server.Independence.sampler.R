@@ -12,7 +12,8 @@ output$"4.1.rangeReactivePlot" <- renderUI({
 		mu=c(input$"4.1.mu1",input$"4.1.mu2"), sigma=c(input$"4.1.sigma1",input$"4.1.sigma1"), 
 		p=input$"4.1.p")
 	})
-	
+
+observeEvent(input$"4.1.rangePlot", ({	
     output$"4.1.Plot" <- renderPlot({
     			index <- input$"4.1.rangePlot"[1]:input$"4.1.rangePlot"[2]
     			viz <- dataInput4.1()$simulation[index]
@@ -23,3 +24,4 @@ output$"4.1.rangeReactivePlot" <- renderUI({
     			main=paste("Quantity of rejected points: ",dataInput4.1()$events, sep=""))
 			hist(viz,prob=T, xlab="p", main="Histogram")
     })
+}))
