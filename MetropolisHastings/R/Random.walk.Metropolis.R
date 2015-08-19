@@ -11,7 +11,7 @@ function(n=4, sigma=1, x0=25, N=2000){
 		}
 		else{
 			x[i] <- x[i-1]
-			k <- k + i
+			k <- k + 1
 		}
 	}
 	return(list(simulation=x, events=k))

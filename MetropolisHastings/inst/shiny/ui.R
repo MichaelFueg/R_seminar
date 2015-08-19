@@ -127,29 +127,28 @@ shinyUI(fluidPage(
     		tabPanel("Example 2.1: Student t distribution",
     			fluidRow(
     			    column(4,
+                        numericInput("2.1.x0", 
+                            "Initial value:", 
+                            value = 25),      
   						numericInput("2.1.n",
     						"Degrees of freedom:",
     						min = 1,
     						value = 4),
-    				    sliderInput("2.1.N", 
-                		    "Time horizon:", 
-                		    min = 1,
-                		    max = 10000, 
-                		    value = 2000)
+                        numericInput("2.1.sigma",
+                           "Variance prosposal distribution:",
+                            min = 0,
+                            value = 1)
     				),
     				column(4,
-    				    numericInput("2.1.sigma",
-    					   "Variance prosposal distribution:",
-    					    min = 0,
-    					    value = 1),
-    				    sliderInput("2.1.x0", 
-                		    "Initial value:", 
-                		    min = 1,
-                		    max = 1000, 
-                		    value = 25)                	
+    				    sliderInput("2.1.N", 
+                            "Time horizon:", 
+                            min = 1,
+                            max = 10000, 
+                            value = 2000),
+    				    uiOutput("2.1.rangeReactivePlot")
                 	),
                 	column(4,
-    					helpText("Add the reference lines of the Student t distribution to the current plot:"),
+    					helpText("Add reference lines of the Student t distribution to the current plot:"),
     					checkboxInput("2.1.refline.0.025", 
     						"Add 0.025 quantile", 
     						value = TRUE),
@@ -162,7 +161,38 @@ shinyUI(fluidPage(
     			plotOutput("2.1.Plot")              
 			),
 
-    			tabPanel("Example 2.2: Laplace distribution"),
+    			tabPanel("Exersice 2.2: Standard Laplace distribution",
+                fluidRow(
+                    column(4,
+                        numericInput("2.2.x0",
+                            "Initial value:",
+                            value = 25),
+                        sliderInput("2.2.N", 
+                        "Time horizon:", 
+                            min = 1,
+                            max = 10000, 
+                            value = 5000)
+                    ),
+                    column(4,
+                        numericInput("2.2.sigma",
+                            "Variance prosposal distribution:",
+                            min = 0,
+                            value = 1),
+                        uiOutput("2.2.rangeReactivePlot")
+                    ),
+                    column(4,
+                        helpText("Add reference lines of the standard Laplace distribution to the current plot:"),
+                        checkboxInput("2.2.refline.0.025", 
+                            "Add 0.025 quantile", 
+                            value = TRUE),
+                        checkboxInput("2.2.refline.0.975", 
+                            "Add  0.975 quantile", 
+                            value = TRUE)
+                    )
+                ),
+                hr(),
+                plotOutput("2.2.Plot")              
+                ),                   
 
     			tabPanel("Example 2.3: Bayesian inference",
     			fluidRow(
@@ -202,61 +232,61 @@ shinyUI(fluidPage(
     			hr(),
     			plotOutput("2.3.Plot")
     			),
+                tabPanel("Exersice 2.4: Effects of parameter modification"),
+                tabPanel("Exersice 2.5: Generic linkage animals"),
 
-    			"4. Independence sampler",
-    			tabPanel("Example 4.1: ",
+    			"3. Independence sampler",
+    			tabPanel("Example 3.1: Two-component normal mixture",
     			fluidRow(
     				column(4,
-  					    numericInput("4.1.n",
+  					    numericInput("3.1.n",
     						"Sample size:",
     						min = 0,
     						max = 1000,
     						value = 30),
-  					    numericInput("4.1.p",
+  					    numericInput("3.1.p",
     						"Mixing parameter:",
     						min = 0,
     						max = 1,
     						value = 0.2),
-    				    sliderInput("4.1.N", 
+    				    sliderInput("3.1.N", 
                 		    "Time horizon:", 
                 		    min = 1,
                 		    max = 10000, 
                 		    value = 5000)
     				),
     				column(4,
-    				    numericInput("4.1.a",
+    				    numericInput("3.1.a",
     					    "Parameter a of Beta(a,b):",
     					    min = 0,
     					    max = 100,
     					    value = 1),
-    				    numericInput("4.1.b",
+    				    numericInput("3.1.b",
     					    "Parameter b of Beta(a,b):",
     					    min = 0,
     					    max = 100,
     					    value = 1),
-                	    uiOutput("4.1.rangeReactivePlot")
+                	    uiOutput("3.1.rangeReactivePlot")
                 	),            	
     				column(4,
-    				    numericInput("4.1.sigma1",
+    				    numericInput("3.1.sigma1",
     					    "First variance:",
     					    min = 0,
     					    value = 1),
-    				    numericInput("4.1.sigma2",
+    				    numericInput("3.1.sigma2",
     					    "Second variance:",
     					    min = 0,
     					    value = 1),
-    				    numericInput("4.1.mu1",
+    				    numericInput("3.1.mu1",
     					    "First mean:",
-    					    min = 0,
-    					    value = 1),
-    				    numericInput("4.1.mu2",
+    					    value = 0),
+    				    numericInput("3.1.mu2",
     					    "Second mean:",
-    					    min = 0,
-    					    value = 1)               	
+    					    value = 5)               	
                 	)    	    			
                 ),
     			hr(),
-    			plotOutput("4.1.Plot")
-    			)
+    			plotOutput("3.1.Plot")
+    		)
     		)   		
 ))
