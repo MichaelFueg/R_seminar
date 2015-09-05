@@ -26,7 +26,25 @@ output$"2.3.rangeReactivePlot" <- renderUI({
     			xlab="Iteration", ylab="X", type="l", 
     			main=paste("Quantity of rejected points: ",dataInput2.3()$events, sep=""))
     		abline(h=input$"2.3.beta", v=input$"2.3.burn", lty=3)
-		hist(xb,prob=T, xlab=bquote(beta), ylab="X", main="Histogram full data range")
+		hist(xb,prob=T, xlab=bquote(beta), ylab="X", main="Histogram")
 		lines(a, dnorm(a, mean(xb), sd(xb)))
         })
     }))
+
+#------------------------ Example 2.4 ------------------------#
+
+dataInput2.4 <- reactive({
+        set.seed(1)
+        Bayesian.inference(n=input$"2.4.N", w=input$"2.4.w", 
+        win=tabulate(sample(1:5, size=250, replace=T, 
+            prob=c(1, 1-input$"2.4.beta", 1-2*input$"2.4.beta", 2*input$"2.4.beta",input$"2.4.beta"))))
+    })
+
+output$"2.4.Plot" <- renderPlot({
+    xb <- dataInput2.4()$simulation[- (1:1000)]
+    a <- seq(min(xb), max(xb), length=100)
+
+    hist(xb,prob=T, xlab=bquote(beta), ylab="X", main="Histogram")
+    lines(a, dnorm(a, mean(xb), sd(xb)))
+    })
+

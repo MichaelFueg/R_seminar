@@ -232,7 +232,36 @@ shinyUI(fluidPage(
     			hr(),
     			plotOutput("2.3.Plot")
     			),
-                tabPanel("Exersice 2.4: Effects of parameter modification"),
+                tabPanel("Exersice 2.4: Effects of parameter modification",
+                helpText("We set the trading days to 250 and the burn-in time to 1000. The random number seed is fixed."),
+                fluidRow(
+                    column(3,
+                        numericInput("2.4.w",
+                            "Width uniform support set:",
+                            min = 0,
+                            max = 1,
+                            value = 0.25)
+                        ),
+                    column(3,
+                        numericInput("2.4.beta",
+                            "Parameter beta:",
+                            min = 0,
+                            max = 0.5,
+                            value = 0.2)
+                    ), 
+                    column(6,
+                        sliderInput("2.4.N", 
+                        "Time horizon:", 
+                            min = 1,
+                            max = 10000, 
+                            value = 5000)
+                    )                                  
+                ),
+                hr(),
+                plotOutput("2.4.Plot"),
+                plotOutput("2.4.Analysis")
+                ),
+
                 tabPanel("Exersice 2.5: Generic linkage animals"),
 
     			"3. Independence sampler",

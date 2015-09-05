@@ -59,3 +59,4 @@ rw <- cbind(res$SimulationNr_1$simulation, res$SimulationNr_2$simulation,
 colnames(rw) <- paste("SimulationNr", 1:4, sep="")
 Qrw <- apply(rw[501:2000, ], 2, function(x) quantile(x,a))
 print(round(cbind(Q, Qrw), 3))
+}
