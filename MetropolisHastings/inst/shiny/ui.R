@@ -237,7 +237,18 @@ shinyUI(fluidPage(
       					    max = 361,
       					    value = 250)
                   	)
-                  ),
+            ),
+            hr(),
+            fluidRow(
+              column(6,
+                helpText("Performance of simulation:"),
+                verbatimTextOutput("2.3.print.time")
+              ),
+              column(6,
+                helpText("Summary of Markov chain:"),
+                verbatimTextOutput("2.3.print.summary")
+              )
+            ),
       			hr(),
       			plotOutput("2.3.Plot")
     			),
@@ -281,8 +292,8 @@ shinyUI(fluidPage(
           				  sliderInput("2.5.N",
                       "Time horizon:",
                       min = 1,
-                      max = 10000,
-                      value = 5000)
+                      max = 50000,
+                      value = 10000)
                 ),
                 column(4,
                     numericInput("2.5.theta",
@@ -302,9 +313,14 @@ shinyUI(fluidPage(
               ),
               hr(),
               fluidRow(
-                  column(6,
-                      helpText("Summary of Markov chain:"),
-                      verbatimTextOutput("2.5.print.summary")
+                column(6,
+                  helpText("Performance of simulation:"),
+                  verbatimTextOutput("2.5.print.time")
+                ),
+                column(6,
+                  helpText("Summary of Markov chain:"),
+                  verbatimTextOutput("2.5.print.summary")
+                )
               ),
               hr(),
               plotOutput("2.5.Plot")

@@ -9,10 +9,17 @@ output$"2.3.rangeReactivePlot" <- renderUI({
 
 
 	dataInput2.3 <- reactive({
-		Bayesian.inference(n=input$"2.3.N", w=input$"2.3.w",
-		win=tabulate(sample(1:5, size=input$"2.3.days", replace=T,
-			prob=c(1, 1-input$"2.3.beta", 1-2*input$"2.3.beta", 2*input$"2.3.beta",input$"2.3.beta"))))
+    y <- system.time({
+		res <- Bayesian.inference(n=input$"2.3.N", w=input$"2.3.w",
+		            win=tabulate(sample(1:5, size=input$"2.3.days", replace=T,
+			                 prob=c(1, 1-input$"2.3.beta", 1-2*input$"2.3.beta",
+                       2*input$"2.3.beta",input$"2.3.beta"))))
+    })
+    x=list(simulation = res$simulation, events = res$events, systemTime = y)
 	})
+
+  output$"2.3.print.time" <- renderPrint({ print(dataInput2.3()$systemTime) })
+  output$"2.3.print.summary" <- renderPrint({ print(summary(dataInput2.3()$simulation)) })
 
     observeEvent(input$"2.3.rangePlot", ({
         output$"2.3.Plot" <- renderPlot({
@@ -58,11 +65,16 @@ output$"2.5.rangeReactivePlot" <- renderUI({
 })
 
 dataInput2.5 <- reactive({
-  Genetic.Linkage(n=input$"2.5.N", w=input$"2.5.w", animals=input$"2.5.animals",
+  y <- system.time({
+  res <- Genetic.Linkage(n=input$"2.5.N", w=input$"2.5.w", animals=input$"2.5.animals",
                 theta=input$"2.5.theta")
+  })
+
+  x=list(simulation = res$simulation, events = res$events, systemTime = y)
 })
 
-output$"2.5.print.summary" <- renderPrint({ print(summary(dataInput1.2()$simulation)) })
+output$"2.5.print.time" <- renderPrint({ print(dataInput2.5()$systemTime) })
+output$"2.5.print.summary" <- renderPrint({ print(summary(dataInput2.5()$simulation)) })
 
 observeEvent(input$"2.5.rangePlot", ({
   output$"2.5.Plot" <- renderPlot({
