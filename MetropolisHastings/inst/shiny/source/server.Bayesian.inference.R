@@ -47,6 +47,8 @@ dataInput2.4 <- reactive({
             prob=c(1, 1-input$"2.4.beta", 1-2*input$"2.4.beta", 2*input$"2.4.beta",input$"2.4.beta"))))
     })
 
+output$"2.4.print.summary" <- renderPrint({ print(summary(dataInput2.4()$simulation)) })
+
 output$"2.4.Plot" <- renderPlot({
     xb <- dataInput2.4()$simulation[- (1:1000)]
     a <- seq(min(xb), max(xb), length=100)

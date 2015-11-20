@@ -1,6 +1,7 @@
 Genetic.Linkage <- function(n, w, animals, theta){
   #0 < theta < 1
-  d <- sample(1:4, size=animals, replace=TRUE, prob=c(2+theta, 1-theta, 1-theta, theta))
+  d <- c(125, 18, 20, 34)
+  #sample(1:4, size=animals, replace=TRUE, prob=c(2+theta, 1-theta, 1-theta, theta))
 
 	f <- function(y, d){
 		if((y < 0) || (y >= 1)) return(0)

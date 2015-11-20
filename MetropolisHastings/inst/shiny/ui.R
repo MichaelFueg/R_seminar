@@ -30,7 +30,7 @@ shinyUI(fluidPage(
   				    plotOutput("1.1.Analysis")
 			    ),
 
-            tabPanel("Exersice 1.2: Performance and alternatives",
+            tabPanel("Exercise 1.2: Performance and alternatives",
                 fluidRow(
                     column(3,
                         numericInput("1.2.sigma",
@@ -77,7 +77,7 @@ shinyUI(fluidPage(
                 )
             ),
 
-            tabPanel("Exersice 1.3: Variation of prosposal distribution",
+            tabPanel("Exercise 1.3: Variation of prosposal distribution",
                 fluidRow(
                     column(3,
                         numericInput("1.3.sigma",
@@ -103,7 +103,7 @@ shinyUI(fluidPage(
                 plotOutput("1.3.Plot.Gamma")
             ),
 
-			tabPanel("Exersice 1.4: Cauchy distribution",
+			tabPanel("Exercise 1.4: Cauchy distribution",
                 fluidRow(
                     column(4,
                         numericInput("1.4.theta",
@@ -170,7 +170,7 @@ shinyUI(fluidPage(
     			plotOutput("2.1.Plot")
 			),
 
-    			tabPanel("Exersice 2.2: Standard Laplace distribution",
+    			tabPanel("Exercise 2.2: Standard Laplace distribution",
                 fluidRow(
                     column(4,
                         numericInput("2.2.x0",
@@ -252,7 +252,7 @@ shinyUI(fluidPage(
       			hr(),
       			plotOutput("2.3.Plot")
     			),
-          tabPanel("Exersice 2.4: Effects of parameter modification",
+          tabPanel("Exercise 2.4: Effects of parameter modification",
             fluidRow(
               column(3,
                 numericInput("2.4.w",
@@ -277,11 +277,18 @@ shinyUI(fluidPage(
               )
             ),
             hr(),
+            fluidRow(
+              column(12,
+                helpText("Summary of Markov chain:"),
+                verbatimTextOutput("2.4.print.summary")
+              )
+            ),
+            hr(),
             plotOutput("2.4.Plot"),
             plotOutput("2.4.Analysis")
           ),
 
-          tabPanel("Exersice 2.5: Generic linkage animals",
+          tabPanel("Exercise 2.5: Generic linkage animals",
             fluidRow(
           	   column(4,
         			      numericInput("2.5.w",
@@ -300,7 +307,7 @@ shinyUI(fluidPage(
                       "Parameter theta:",
                       min = 0,
                       max = 1,
-                      value = 0.5),
+                      value = 0.628),
                     uiOutput("2.5.rangeReactivePlot")
                 ),
                 column(4,
